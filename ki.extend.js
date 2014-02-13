@@ -28,7 +28,7 @@
 
   $.prototype.attr = function(a, b) {
     return b === []._ ? this[0].getAttribute(a) : this.each(function(c) {
-      c.setAttribute(a) = b;
+      c.setAttribute(a, b);
     });
   };
 

@@ -21,6 +21,7 @@ Extend [ki.js](https://github.com/dciccale/ki.js) with some fancy prototypes.
 * text
 * html
 * append
+* prepend
 * remove
 * parent
 * trigger

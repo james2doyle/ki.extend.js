@@ -1,0 +1,3 @@
+[submodule "ki"]
+	path = ki
+	url = https://github.com/dciccale/ki.js

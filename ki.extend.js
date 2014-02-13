@@ -88,6 +88,12 @@
     });
   };
 
+  $.prototype.prepend = function(a) {
+    return this.each(function(b) {
+      b.parentNode.insertBefore(a, b.parentNode.firstChild);
+    });
+  };
+
   $.prototype.remove = function() {
     return this.each(function(b) {
       b.parentNode.removeChild(b);

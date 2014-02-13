@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing attrs</title>
+  <style type="text/css" media="screen">
+    #message:before {
+     content: attr(title) ": ";
+   }
+ </style>
+</head>
+<body>
+  <button type="button" class="add">add</button>
+  <button type="button" class="value">value</button>
+  <button type="button" class="remove">remove</button>
+  <button type="button" class="has">has</button>
+  <hr>
+  <div id="message" title="special">I have some text</div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    var m = $('#message');
+    var fns = {
+      add: function() {
+        m.attr('title', 'special');
+      },
+      value: function() {
+        alert(m.attr('title'));
+      },
+      remove: function() {
+        m.removeAttr('title');
+      },
+      has: function() {
+        alert(m.hasAttr('title'));
+      },
+    };
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      fns[this.className]();
+      return false;
+    });
+  </script>
+</body>
+</html>

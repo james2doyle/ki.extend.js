@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing classes</title>
+  <style type="text/css" media="screen">
+    .special {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button type="button" class="add">add</button>
+  <button type="button" class="remove">remove</button>
+  <button type="button" class="has">has</button>
+  <button type="button" class="toggle">toggle</button>
+  <hr>
+  <div id="message" class="special">if I am red I have a class</div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    var m = $('#message');
+    var fns = {
+      add: function() {
+        m.addClass('special');
+      },
+      remove: function() {
+        m.removeClass('special');
+      },
+      has: function() {
+        alert(m.hasClass('special'));
+      },
+      toggle: function() {
+        m.toggleClass('special');
+      },
+    };
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      fns[this.className]();
+      return false;
+    });
+  </script>
+</body>
+</html>

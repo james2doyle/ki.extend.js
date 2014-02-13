@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing ajax</title>
+</head>
+<body>
+  <button type="button" class="small">small</button>
+  <button type="button" class="large">large</button>
+  <button type="button" class="text">text</button>
+  <button type="button" class="json">json</button>
+  <hr>
+  <div id="message"></div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    var data = {
+      id: 123,
+      attrs: [1,2,3,[4,5,6,7]],
+      props: {
+        time: Date.now(),
+        type: 'POST',
+        level1: {
+          level2: [{
+            yep: 1
+          }, {
+            nope: 0
+          }]
+        }
+      }
+    };
+    var m = $('#message')[0];
+    var fns = {
+      small: function() {
+        $.ajax('form.php', { id: 123 }, function(res){
+          m.innerHTML = "First<br>" + res;
+        });
+      },
+      large: function() {
+        $.ajax('form.php', data, function(res){
+          m.innerHTML = "Second<br>" + res;
+        });
+      },
+      text: function() {
+        $.ajax('text.txt', function(res){
+          m.innerHTML = "Third<br>" + res;
+        });
+      },
+      json: function() {
+        $.ajax('json.js', function(res) {
+          m.innerHTML = "Fourth<br>" + res;
+        });
+      }
+    };
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      fns[this.className]();
+      return false;
+    });
+  </script>
+</body>
+</html>

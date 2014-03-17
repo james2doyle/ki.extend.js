@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing each-map</title>
+</head>
+<body>
+  <p>Check watch the logger and see the deferred functions run.</p>
+  <hr>
+  <div id="message"></div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    function log() {
+      var _log = document.getElementById('message');
+      for (var i = 0; i < arguments.length; i++) {
+        _log.innerHTML += ' '+arguments[i];
+      }
+      _log.innerHTML += '</br>';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var arr = ['a','b','c'];
+      var newarr = $.each(arr, function(index, elem){
+        log(index, elem);
+      }).map(arr, function(item){
+        return item + 'a';
+      });
+      log(newarr);
+    });
+  </script>
+</body>
+</html>

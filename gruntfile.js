@@ -14,6 +14,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
         'build/parts/header.js',
+        'build/parts/each.js',
         'build/parts/classes.js',
         'build/parts/append-prepend.js',
         'build/parts/attr.js',

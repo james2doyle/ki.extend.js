@@ -9,6 +9,13 @@
 
 (function() {
 
+$.each = function(arr, callback) {
+  var i = 0, l = arr.length;
+  for(; i < l; ++i) {
+    callback(i, arr[i]);
+  }
+  return this;
+};
 // map some classlist functions to the jQuery counterpart
 var props = ['addClass', 'removeClass', 'toggleClass'],
 maps = ['add', 'remove', 'toggle'];

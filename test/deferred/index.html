@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing deferred</title>
+</head>
+<body>
+  <p>Check watch the logger and see the deferred functions run.</p>
+  <hr>
+  <div id="message"></div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    function log() {
+      var _log = document.getElementById('message');
+      for (var i = 0; i < arguments.length; i++) {
+        _log.innerHTML += ' '+arguments[i];
+      }
+      _log.innerHTML += '</br>';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      function late(n) {
+        var p = new $.Deferred();
+        setTimeout(function() {
+          p.resolve(n);
+        }, n);
+        return p.promise();
+      }
+      function late2(n) {
+        var p = new $.Deferred();
+        setTimeout(function() {
+          p.resolve(n);
+        }, n);
+        return p.promise();
+      }
+      late(500).then(function(resolvedValue) {
+        log('late resolved and success. Resolved = ', resolvedValue);
+      }, function() {
+        log('error');
+      });
+      late2(600).then(function(resolvedValue) {
+        log('late2 resolved and success. Resolved = ', resolvedValue);
+      }, function() {
+        log('error');
+      });
+      $.when(late(1000), late2(1200)).then(function(resolvedValue1, resolvedValue2) {
+        log(resolvedValue1, resolvedValue2);
+      }, function() {
+        log('error');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -29,6 +29,7 @@ module.exports = function(grunt) {
         'build/parts/map.js',
         'build/parts/stop.js',
         'build/parts/ajax.js',
+        'build/ki-deferred-js/deferred.js',
         'build/parts/footer.js'
         ],
         dest: 'ki.extend.js',

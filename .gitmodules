@@ -1,3 +1,6 @@
 [submodule "ki"]
 	path = ki
 	url = https://github.com/dciccale/ki.js
+[submodule "build/ki-deferred-js"]
+	path = build/ki-deferred-js
+	url = https://github.com/james2doyle/ki.deferred.js

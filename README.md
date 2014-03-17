@@ -125,6 +125,7 @@ Here is the default list:
 
 ```
 'build/parts/header.js',
+'build/parts/each.js',
 'build/parts/classes.js',
 'build/parts/append-prepend.js',
 'build/parts/attr.js',
@@ -140,6 +141,7 @@ Here is the default list:
 'build/parts/map.js',
 'build/parts/stop.js',
 'build/parts/ajax.js',
+'build/ki-deferred-js/deferred.js',
 'build/parts/footer.js'
 ```
 

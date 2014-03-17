@@ -41,6 +41,10 @@ $('.btn').on('click', function(e){
 });
 ```
 
+*$.each*
+
+ForEach function for arrays.
+
 *$.map*
 
 Map function for arrays.
@@ -53,9 +57,37 @@ Trim whitespace in string.
 
 Serialize an object to be used in a *POST* request.
 
+*$.Deferred*
+
+Yep. `$.Deferred` just like jQuery.
+
+```
+function late(n) {
+  var p = new $.Deferred();
+  setTimeout(function() {
+    p.resolve(n);
+  }, n);
+  return p.promise();
+}
+```
+
+*$.when*
+
+Run an array of `$.Deferred` functions in series. The functions must be promises. Calling `.then` on `$.when` will have the resolved values as the arguments.
+
+```
+$.when(late(1000), late(1200)).then(function(resolvedValue1, resolvedValue2) {
+  console.log(resolvedValue1, resolvedValue2); // 1000, 1200
+}, function() {
+  console.log('error');
+});
+```
+
 *$.ajax*
 
 The beast. Easy ajax functions.
+
+**Note:** these are *not* deferred. The reason? the deferred.js script makes up about half of the compiled `ki.extend.js` file.
 
 Simple `POST`. Data is automagically `$.param'd` and sent with a request header of `('Content-type', 'application/x-www-form-urlencoded')`.
 

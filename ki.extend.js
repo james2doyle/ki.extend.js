@@ -44,6 +44,18 @@ $.prototype.prepend = function(a) {
   });
 };
 
+$.prototype.hide = function() {
+  return this.each(function(b) {
+    b.style.display = 'none';
+  });
+};
+
+$.prototype.show = function() {
+  return this.each(function(b) {
+    b.style.display = '';
+  });
+};
+
 $.prototype.attr = function(a, b) {
   return b === []._ ? this[0].getAttribute(a) : this.each(function(c) {
     c.setAttribute(a, b);

@@ -9,6 +9,8 @@ Extend [ki.js](https://github.com/dciccale/ki.js) with some fancy prototypes. Ir
 * removeClass
 * toggleClass
 * hasClass
+* show
+* hide
 * css
 * attr
 * removeAttr

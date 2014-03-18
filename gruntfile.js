@@ -17,6 +17,7 @@ module.exports = function(grunt) {
         'build/parts/each.js',
         'build/parts/classes.js',
         'build/parts/append-prepend.js',
+        'build/parts/hide-show.js',
         'build/parts/attr.js',
         'build/parts/before-after.js',
         'build/parts/css.js',

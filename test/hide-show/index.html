@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing hide and show</title>
+  <style type="text/css" media="screen">
+    .special {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button type="button" class="hide">hide</button>
+  <button type="button" class="show">show</button>
+  <hr>
+  <div id="message">show and hide me!</div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    var m = $('#message');
+    var fns = {
+      hide: function() {
+        m.hide();
+      },
+      show: function() {
+        m.show();
+      }
+    };
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      fns[this.className]();
+      return false;
+    });
+  </script>
+</body>
+</html>

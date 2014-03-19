@@ -5,10 +5,19 @@
   <title>ki testing ajax</title>
 </head>
 <body>
-  <button type="button" class="small">small</button>
-  <button type="button" class="large">large</button>
-  <button type="button" class="text">text</button>
-  <button type="button" class="json">json</button>
+  <button type="button" class="default" data-action="small">small</button>
+  <button type="button" class="default" data-action="large">large</button>
+  <button type="button" class="default" data-action="text">text</button>
+  <button type="button" class="default" data-action="json">json</button>
+  <div class="deferred-buttons" style="display: none">
+    <hr>
+    <button type="button" class="deferred" data-action="small">small</button>
+    <button type="button" class="deferred" data-action="large">large</button>
+    <button type="button" class="deferred" data-action="text">text</button>
+    <button type="button" class="deferred" data-action="json">json</button>
+    <button type="button" class="deferred" data-action="when">when</button>
+    <button type="button" class="deferred" data-action="error">error</button>
+  </div>
   <hr>
   <div id="message"></div>
   <script src="../../ki/ki.js"></script>
@@ -52,11 +61,56 @@
         });
       }
     };
-    $('button').on('click', function(event) {
+    $('.default').on('click', function(event) {
       event.preventDefault();
-      fns[this.className]();
+      fns[this.dataset.action]();
       return false;
     });
+    // only run the functions if they included deferred
+    if (typeof($.Deferred) === "function") {
+      $('.deferred-buttons').css('display', 'block');
+      var fnsd = {
+        small: function() {
+          $.ajax('form.php', { id: 123 }).done(function(res){
+            m.innerHTML = "First<br>" + res;
+          });
+        },
+        large: function() {
+          $.ajax('form.php', data).done(function(res){
+            m.innerHTML = "Second<br>" + res;
+          });
+        },
+        text: function() {
+          $.ajax('text.txt').done(function(res){
+            m.innerHTML = "Third<br>" + res;
+          });
+        },
+        json: function() {
+          $.ajax('json.js').done(function(res) {
+            m.innerHTML = "Fourth<br>" + res;
+          });
+        },
+        error: function() {
+          $.ajax('nothing.js').then(function(res) {
+            m.innerHTML = "Error<br>" + res;
+          }, function(res) {
+            m.innerHTML = "Error<br>" + res;
+          });
+        },
+        when: function() {
+          $.when($.ajax('form.php', { id: 123 }), $.ajax('form.php', data)).then(function(res1, res2) {
+            m.innerHTML = "Res 1<br>" + res1 + "<br>Res 2<br>" + res2;
+          }, function(res) {
+            m.innerHTML = "Error<br>" + res.status;
+          });
+        }
+      };
+      $('.deferred').on('click', function(event) {
+        event.preventDefault();
+        fnsd[this.dataset.action]();
+        return false;
+      });
+    }
   </script>
 </body>
 </html>

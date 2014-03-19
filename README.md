@@ -89,7 +89,7 @@ $.when(late(1000), late(1200)).then(function(resolvedValue1, resolvedValue2) {
 
 The beast. Easy ajax functions.
 
-**Note:** these are *not* deferred. The reason? the deferred.js script makes up about half of the compiled `ki.extend.js` file.
+**Note:** by default, deferred Ajax is included in the build. If you **are not using Deferred** then just uncomment the normal ajax lib and comment off Deferred and Ajax-Deferred.
 
 Simple `POST`. Data is automagically `$.param'd` and sent with a request header of `('Content-type', 'application/x-www-form-urlencoded')`.
 
@@ -119,6 +119,45 @@ $.ajax('http://example.com/save', { id: 456 }, function(res, err) {
 });
 ```
 
+---
+
+Deferred Examples
+
+```javascript
+$.ajax('form.php', { id: 123 }).done(function(res){
+  console.log(res);
+});
+```
+
+Simple `GET`. If you do not pass an object, than the request is treated as a `GET` request.
+
+```javascript
+$.ajax('json.js').done(function(res) {
+  console.log(res);
+});
+```
+
+Simple error handling. The second argument in the callback is an error callback.
+
+```javascript
+$.ajax('http://example.com/save', { id: 456 }).then(function(res) {
+  alert('I am ok!');
+},
+function(res) {
+  alert('Got an error, bro.');
+});
+```
+
+Using `$.when`:
+
+```javascript
+$.when($.ajax('text.txt'), $.ajax('json.js')).then(function(res1, res2){
+  console.log(res1, res2);
+}, function(res){
+  console.log(res);
+});
+```
+
 ### Building
 
 You can choose to build a custom version of the extend lib. Just open the `gruntfile` and remove items from the concat task.
@@ -142,7 +181,8 @@ Here is the default list:
 'build/parts/is.js',
 'build/parts/map.js',
 'build/parts/stop.js',
-'build/parts/ajax.js',
+// 'build/parts/ajax-deferred.js',
+// 'build/parts/ajax.js',
 'build/ki-deferred-js/deferred.js',
 'build/parts/footer.js'
 ```

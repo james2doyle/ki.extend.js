@@ -30,7 +30,8 @@ module.exports = function(grunt) {
         'build/parts/is.js',
         'build/parts/map.js',
         'build/parts/stop.js',
-        'build/parts/ajax.js',
+        // 'build/parts/ajax.js',
+        'build/parts/ajax-deferred.js',
         'build/ki-deferred-js/deferred.js',
         'build/parts/footer.js'
         ],

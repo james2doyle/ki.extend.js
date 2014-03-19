@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <title>ki testing css</title>
+</head>
+<body>
+  <button type="button" class="green">green</button>
+  <button type="button" class="background">background</button>
+  <button type="button" class="multiple">{ color: white, background: black }</button>
+  <button type="button" class="get">get</button>
+  <hr>
+  <div id="message">Change my css</div>
+  <script src="../../ki/ki.js"></script>
+  <script src="../../ki.extend.js"></script>
+  <script>
+    var m = $('#message');
+    var fns = {
+      green: function() {
+        m.css('color', 'green');
+      },
+      background: function() {
+        m.css('background', 'red');
+      },
+      multiple: function() {
+        m.css({
+          color: 'white',
+          background: 'black'
+        });
+      },
+      get: function() {
+        alert("Color is " + m.css('color'));
+      }
+    };
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      fns[this.className]();
+      return false;
+    });
+  </script>
+</body>
+</html>

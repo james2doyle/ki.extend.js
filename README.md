@@ -199,6 +199,7 @@ Here is the small list of test so far:
 ajax
 attrs
 classes
+css
 deferred
 each-map
 first-last-get-parent-remove

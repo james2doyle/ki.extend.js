@@ -8,7 +8,7 @@ $.prototype.is = function(a) {
       if (n[i] === this[0]) {
         return true;
       }
-      return false;
     }
+    return false;
   }
 };

@@ -34,13 +34,13 @@ $.prototype.hasClass = function(a) {
 
 $.prototype.append = function(a) {
   return this.each(function(b) {
-    b.parentNode.appendChild(a);
+    b.appendChild(a[0]);
   });
 };
 
 $.prototype.prepend = function(a) {
   return this.each(function(b) {
-    b.parentNode.insertBefore(a, b.parentNode.firstChild);
+    b.insertBefore(a[0], b.parentNode.firstChild);
   });
 };
 
@@ -161,8 +161,8 @@ $.prototype.is = function(a) {
       if (n[i] === this[0]) {
         return true;
       }
-      return false;
     }
+    return false;
   }
 };
 

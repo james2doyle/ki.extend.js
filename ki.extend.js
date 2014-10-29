@@ -166,14 +166,11 @@ $.prototype.is = function(a) {
   }
 };
 
-$.map = function(arr, fn) {
-  var results = [];
-  var i = 0, l = arr.length;
-  for(; i < l; ++i) {
-    results.push(fn(arr[i], i));
-  }
-  return results;
-};
+"filter map".split(" ").forEach(function(m) {
+  $[m] = function(a, b) {
+    return a[m](b);
+  };
+});
 
 $.stop = function(e) {
   if (!e.preventDefault) {

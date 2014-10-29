@@ -26,6 +26,10 @@
         return item + 'a';
       });
       log(newarr);
+      var newarr2 = $.filter(arr, function(item){
+        return item === 'a';
+      });
+      log(newarr2);
     });
   </script>
 </body>

@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         'build/parts/trim.js',
         'build/parts/trigger.js',
         'build/parts/is.js',
-        'build/parts/map.js',
+        'build/parts/arrays.js',
         'build/parts/stop.js',
         // 'build/parts/ajax.js',
         'build/parts/ajax-deferred.js',

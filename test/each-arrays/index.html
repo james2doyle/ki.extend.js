@@ -21,7 +21,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       var arr = ['a','b','c'];
       var newarr = $.each(arr, function(index, elem){
-        log(index, elem);
+        log(index, elem, this);
       }).map(arr, function(item){
         return item + 'a';
       });

@@ -40,7 +40,7 @@ $.prototype.append = function(a) {
 
 $.prototype.prepend = function(a) {
   return this.each(function(b) {
-    b.insertBefore(a[0], b.parentNode.firstChild);
+    b.insertBefore(a[0], b.firstChild);
   });
 };
 

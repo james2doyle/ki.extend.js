@@ -10,11 +10,16 @@
 (function() {
 
 $.each = function(arr, callback) {
-  var i = 0, l = arr.length;
-  for(; i < l; ++i) {
-    callback.call(arr[i], i, arr[i]);
+  if(toString.call(arr) === '[object Array]'){
+    var i = 0, l = arr.length;
+    for(; i < l; ++i) {
+      callback.call(arr[i], i, arr[i]);
+    }
+  } else {
+    for (i in arr)
+      callback.call(arr[i], i, arr[i]);
   }
-  return this;
+  return arr;
 };
 // map some classlist functions to the jQuery counterpart
 var props = ['addClass', 'removeClass', 'toggleClass'],
